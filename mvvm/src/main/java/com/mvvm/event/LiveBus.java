@@ -60,8 +60,11 @@ public class LiveBus {
         return subscribe(eventKey, null, tClass);
     }
 
+    //根据eventkey订阅事件
     public <T> MutableLiveData<T> subscribe(Object eventKey, String tag, Class<T> tClass) {
+        //合并event
         String key = mergeEventKey(eventKey, tag);
+        //判断是否为第一次订阅
         if (!mLiveBus.containsKey(key)) {
             mLiveBus.put(key, new LiveBusData<>(true));
         } else {
@@ -76,6 +79,7 @@ public class LiveBus {
         return postEvent(eventKey, null, value);
     }
 
+    //根据eventkey 转发数据
     public <T> MutableLiveData<T> postEvent(Object eventKey, String tag, T value) {
         MutableLiveData<T> mutableLiveData = subscribe(mergeEventKey(eventKey, tag));
         mutableLiveData.postValue(value);
@@ -121,7 +125,7 @@ public class LiveBus {
 
     }
 
-
+    //合并event
     private String mergeEventKey(Object eventKey, String tag) {
         String mEventkey;
         if (!TextUtils.isEmpty(tag)) {

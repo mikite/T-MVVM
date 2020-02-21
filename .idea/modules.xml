@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/T-MVVM.iml" filepath="$PROJECT_DIR$/T-MVVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/T-MVVM-app.iml" filepath="$PROJECT_DIR$/app/T-MVVM-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/T-MVVM-basiccomponent.iml" filepath="$PROJECT_DIR$/basiccomponent/T-MVVM-basiccomponent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mvvm/T-MVVM-mvvm.iml" filepath="$PROJECT_DIR$/mvvm/T-MVVM-mvvm.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/artproject.iml" filepath="$PROJECT_DIR$/artproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/basiccomponent.iml" filepath="$PROJECT_DIR$/basiccomponent/basiccomponent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/bottomnavigationbar/basiccomponent-bottomnavigationbar.iml" filepath="$PROJECT_DIR$/basiccomponent/bottomnavigationbar/basiccomponent-bottomnavigationbar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/library/basiccomponent-library.iml" filepath="$PROJECT_DIR$/basiccomponent/library/basiccomponent-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basiccomponent/tablayout/basiccomponent-tablayout.iml" filepath="$PROJECT_DIR$/basiccomponent/tablayout/basiccomponent-tablayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" filepath="$PROJECT_DIR$/basiccomponent/bottomnavigationbar/bottomnavigationbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/basiccomponent/library/library.iml" filepath="$PROJECT_DIR$/basiccomponent/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvvm/mvvm.iml" filepath="$PROJECT_DIR$/mvvm/mvvm.iml" />

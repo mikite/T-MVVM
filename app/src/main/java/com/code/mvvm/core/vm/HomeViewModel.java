@@ -29,9 +29,11 @@ public class HomeViewModel extends AbsViewModel<HomeRepository> {
 
     }
 
+    //获取主页数据
     public void getHomeListData() {
         getBannerData("1", "4", "109", "", null);
         getHomeListData("0");
+        //respository获取数据添加Disposable
         mRepository.loadHomeData();
     }
 

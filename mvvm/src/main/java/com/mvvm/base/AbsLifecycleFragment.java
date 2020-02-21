@@ -31,9 +31,12 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
     @Override
     public void initView(Bundle state) {
+        //赋值创建viewModel
         mViewModel = VMProviders(this, (Class<T>) TUtil.getInstance(this, 0));
         if (null != mViewModel) {
+            //绑定注册订阅者生命周期---->以便接收数据
             dataObserver();
+            //监听状态
             mViewModel.mRepository.loadState.observe(this, observer);
         }
     }
@@ -43,8 +46,7 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
      *
      * @return ViewModel
      */
-    protected <T extends ViewModel> T VMProviders(BaseFragment
-                                                          fragment, @NonNull Class<T> modelClass) {
+    protected <T extends ViewModel> T VMProviders(BaseFragment fragment, @NonNull Class<T> modelClass) {
         return ViewModelProviders.of(fragment).get(modelClass);
 
     }
@@ -101,7 +103,8 @@ public abstract class AbsLifecycleFragment<T extends AbsViewModel> extends BaseF
 
 
     /**
-     * 状态页面监听
+     *
+     * 创建状态页面监听Observer
      */
     protected Observer observer = new Observer<String>() {
         @Override

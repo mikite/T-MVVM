@@ -33,40 +33,47 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
 
     @Override
     public void initView(final Bundle state) {
+        //--->创建viewModel->绑定注册订阅者生命周期->以便接收数据->监听状态
         super.initView(state);
         setTitle(getResources().getString(R.string.home_title_name));
         refreshHelper.setEnableLoadMore(false);
     }
 
 
+    //绑定注册订阅者生命周期----> 接收添加数据
     @Override
     protected void dataObserver() {
         registerSubscriber(HomeRepository.EVENT_KEY_HOME, HomeMergeVo.class)
                 .observe(this, homeMergeVo -> {
                     if (homeMergeVo != null) {
+                        //请求完成后向页面添加数据
                         HomeFragment.this.addItems(homeMergeVo);
                     }
                 });
 
     }
 
+    //创建layoutManager
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {
         return new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
     }
 
+    //创建页面适配器--绑定home页面的bean类和viewitem的布局文件
     @Override
     protected DelegateAdapter createAdapter() {
         return AdapterPool.newInstance().getHomeAdapter(getActivity())
                 .setOnItemClickListener(this)
                 .build();
     }
-
+    //获取主页数据
     @Override
     protected void getRemoteData() {
         mViewModel.getHomeListData();
     }
 
+
+    //组装获得到的数据
     private void addItems(HomeMergeVo homeMergeVo) {
         if (isRefresh) {
             mItems.clear();
@@ -89,6 +96,7 @@ public class HomeFragment extends BaseListFragment<HomeViewModel> implements OnI
         if (homeMergeVo.homeListVo.data.matreialsubject.size() > 0) {
             mItems.addAll(homeMergeVo.homeListVo.data.matreialsubject);
         }
+        //将数据设置到适配器
         setData();
     }
 

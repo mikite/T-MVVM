@@ -37,10 +37,10 @@ public class WorkRepository extends BaseRepository {
 
 
     public WorkRepository() {
-        if (EVENT_KEY_WORK_LIST==null) {
+        if (EVENT_KEY_WORK_LIST == null) {
             EVENT_KEY_WORK_LIST = StringUtil.getEventKey();
         }
-        if (EVENT_KEY_WORK_LIST==null) {
+        if (EVENT_KEY_WORK_MORE == null) {
             EVENT_KEY_WORK_MORE = StringUtil.getEventKey();
         }
     }
@@ -65,7 +65,7 @@ public class WorkRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onFailure(String msg,int code) {
+                    public void onFailure(String msg, int code) {
                     }
                 }));
     }
@@ -101,7 +101,7 @@ public class WorkRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onFailure(String msg,int code) {
+                    public void onFailure(String msg, int code) {
                         postState(StateConstants.ERROR_STATE);
                     }
                 }));
@@ -136,7 +136,7 @@ public class WorkRepository extends BaseRepository {
                     }
 
                     @Override
-                    public void onFailure(String msg,int code) {
+                    public void onFailure(String msg, int code) {
                         postState(StateConstants.ERROR_STATE);
 
                     }

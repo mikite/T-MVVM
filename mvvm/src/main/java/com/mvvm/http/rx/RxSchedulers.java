@@ -13,8 +13,11 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author：tqzhang on 18/8/20 14:11
+ * 线程调度
  */
 public class RxSchedulers {
+
+    //不支持背压的线程调度Observable
     public static <T> ObservableTransformer<T, T> io_main(int context) {
         return new ObservableTransformer<T, T>() {
             @Override
@@ -24,6 +27,7 @@ public class RxSchedulers {
         };
     }
 
+    //支持背压的线程调度Flowable
     public static <T> FlowableTransformer<T, T> io_main() {
         return new FlowableTransformer<T, T>() {
             @Override

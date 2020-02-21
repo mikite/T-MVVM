@@ -56,7 +56,14 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
 
     @Override
     public void initView(Bundle state) {
+        //--->创建viewModel->绑定注册订阅者生命周期->以便接收数据->监听状态
         super.initView(state);
+        //初始化fragment view和数据适配器
+        initFragment();
+    }
+
+
+    private void initFragment() {
         mRecyclerView = getViewById(R.id.recycler_view);
         mSmartRefreshLayout = getViewById(R.id.refresh_layout);
         mTitleBar = getViewById(R.id.rl_title_bar);
@@ -71,7 +78,6 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(createLayoutManager());
         mRecyclerView.addOnScrollListener(onScrollListener);
-
     }
 
     @Override
@@ -97,6 +103,7 @@ public abstract class BaseListFragment<T extends AbsViewModel> extends AbsLifecy
         }
     }
 
+    //mItems从xx_fragment传入设置页面数据，刷新页面
     protected void setData() {
         adapter.setDatas(mItems);
         adapter.notifyDataSetChanged();

@@ -49,6 +49,7 @@ import com.code.mvvm.widget.banner.BannerItemView;
 
 /**
  * @author：tqzhang on 18/8/3 16:25
+ * 适配器池--创建各个页面的适配器
  */
 public class AdapterPool {
 
@@ -144,6 +145,8 @@ public class AdapterPool {
                 .bind(LiveRecommendVo.class, new LiveItemHolder(context));
     }
 
+
+    //创建home适配器，绑定bean类和view布局
     public DelegateAdapter.Builder getHomeAdapter(Context context) {
         return new DelegateAdapter.Builder<>()
                 .bind(BannerListVo.class, new BannerItemView(context))

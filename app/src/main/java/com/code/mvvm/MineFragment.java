@@ -47,6 +47,7 @@ public class MineFragment extends BaseFragment {
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
+
         //5.0以上支持混合https和http
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);

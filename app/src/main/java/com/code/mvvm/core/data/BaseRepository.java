@@ -34,6 +34,7 @@ public class BaseRepository extends AbsRepository {
         postData(eventKey, tag, state);
     }
 
+    //通过eventKey来postEvent将数据发送
     protected void postData(Object eventKey, String tag, Object t) {
         LiveBus.getDefault().postEvent(eventKey, tag, t);
     }

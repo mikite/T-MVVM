@@ -31,10 +31,12 @@ public class HomeRepository extends BaseRepository {
         }
     }
 
+    //构造获取主页数据的Observable
     public void loadHomeData(String id) {
         mHomeListObservable = apiService.getHomeData(id);
     }
 
+    //构造获取banner数据的Observable
     public void loadBannerData(String posType,
                                String fCatalogId,
                                String sCatalogId,
@@ -43,10 +45,10 @@ public class HomeRepository extends BaseRepository {
         mBannerObservable = apiService.getBannerData(posType, fCatalogId, sCatalogId, tCatalogId, province);
     }
 
-
+    //组装home和banner的observable，添加Disposable
     public void loadHomeData() {
         addDisposable(Flowable.concat(mBannerObservable, mHomeListObservable)
-                .compose(RxSchedulers.io_main())
+                .compose(RxSchedulers.io_main())//支持背压的线程调度
                 .subscribeWith(new RxSubscriber<Object>() {
                     @Override
                     protected void onNoNetWork() {
@@ -60,6 +62,7 @@ public class HomeRepository extends BaseRepository {
                         } else if (object instanceof HomeListVo) {
                             homeMergeVo.homeListVo = (HomeListVo) object;
                             if (homeMergeVo != null) {
+                                //发送数据到EVENT_KEY_HOME
                                 postData(EVENT_KEY_HOME, homeMergeVo);
                                 postState(StateConstants.SUCCESS_STATE);
                             } else {

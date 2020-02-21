@@ -49,7 +49,8 @@ public class WorkFragment extends BaseListFragment<WorkViewModel> implements OnI
             }
         });
 
-        registerSubscriber(WorkRepository.EVENT_KEY_WORK_MORE, WorksListVo.class).observe(this, worksListVo -> {
+        registerSubscriber(WorkRepository.EVENT_KEY_WORK_MORE, WorksListVo.class).
+                observe(this, worksListVo -> {
             if (worksListVo != null) {
                 lastId = worksListVo.data.content.get(worksListVo.data.content.size() - 1).tid;
                 uTime = worksListVo.data.content.get(worksListVo.data.content.size() - 1).utime;
